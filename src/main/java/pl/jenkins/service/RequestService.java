@@ -8,4 +8,6 @@ import pl.jenkins.library.JsonMap;
 public interface RequestService {
 
     JsonMap getJson(String url);
+
+    String getText(String jobsUrl);
 }

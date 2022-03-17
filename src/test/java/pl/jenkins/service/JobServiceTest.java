@@ -1,23 +1,40 @@
 package pl.jenkins.service;
 
-import org.assertj.core.api.Assertions;
+import static org.assertj.core.api.Assertions.assertThat;
+
+import java.util.Optional;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import pl.jenkins.model.Job;
+import pl.jenkins.model.JobStatus;
 
 public class JobServiceTest {
 
+    private JobService jobService;
+
+    @BeforeEach
+    void init() {
+        jobService = new JobService();
+    }
+
     @Test
     void jobFound() {
-        Assertions.fail("Not implemented yet");
         // given
         // when
+        Optional<Job> optionalJob = jobService.getJob("10");
+
         // then
+        Job job = optionalJob.get();
+        assertThat(job.getDescription()).contains("XYZ-123");
+        assertThat(job.getStatus()).isEqualTo(JobStatus.SUCCEEDED);
     }
 
     @Test
     void jobNotFound() {
-        Assertions.fail("Not implemented yet");
-        // given
         // when
+        Optional<Job> optionalJob = jobService.getJob("10");
+
         // then
+        assertThat(optionalJob).isNotPresent();
     }
 }

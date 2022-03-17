@@ -25,4 +25,14 @@ class JobListServiceTest {
         // then
         assertThat(actualJobStatus).isEqualTo(JobStatus.RUNNING);
     }
+
+    @Test
+    void jobListEmpty() {
+        // given
+        // when
+        JobStatus actualJobStatus = jobListService.getStatusByTicketNumber("ABC-123");
+
+        // then
+        assertThat(actualJobStatus).isEqualTo(JobStatus.NOT_FOUND);
+    }
 }

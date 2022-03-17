@@ -6,6 +6,12 @@ import pl.jenkins.model.Job;
 
 public class JobFinder {
 
+    private final JobService jobService;
+
+    public JobFinder(JobService jobService) {
+        this.jobService = jobService;
+    }
+
     public Optional<Job> findByDescription(List<String> numbers, String ticketNumber) {
         for (String number : numbers) {
             Optional<Job> job = checkJob(number, ticketNumber);

@@ -7,10 +7,37 @@ import pl.jenkins.model.Job;
 public class JobFinder {
 
     public Optional<Job> findByDescription(List<String> numbers, String ticketNumber) {
-        return null;
+        for (String number : numbers) {
+            Optional<Job> job = checkJob(number, ticketNumber);
+
+            if (job.isPresent()) {
+                return job;
+            }
+        }
+
+        return Optional.empty();
+
     }
 
     public Optional<Job> findInHtml(String html, String ticketNumber) {
         return null;
     }
+
+    private Optional<Job> checkJob(String number, String ticketNumber) {
+        Optional<Job> job = jobService.getJob(number);
+
+        if (job.isEmpty()) {
+            return Optional.empty();
+        }
+
+        String description = job.get().getDescription();
+
+        if (description != null && description.contains(ticketNumber)) {
+            return job;
+        } else {
+            return Optional.empty();
+        }
+    }
+
+
 }

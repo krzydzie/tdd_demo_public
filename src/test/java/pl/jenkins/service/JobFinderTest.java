@@ -2,6 +2,10 @@ package pl.jenkins.service;
 
 import static java.util.Arrays.asList;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.BDDMockito.given;
+import static org.mockito.BDDMockito.willReturn;
 
 import java.util.Optional;
 import org.junit.jupiter.api.BeforeEach;
@@ -27,6 +31,9 @@ class JobFinderTest {
     @Test
     void findByDescriptionWhenJobFound() {
         // given
+        willReturn(Optional.of(new Job(JobStatus.RUNNING, "abc"))).given(jobService).getJob("10");
+        willReturn(Optional.of(new Job(JobStatus.RUNNING, "XYZ-123"))).given(jobService).getJob("20");
+
         // when
         Optional<Job> optionalJob = jobFinder.findByDescription(asList("10", "20"), "XYZ-123");
 
@@ -39,6 +46,8 @@ class JobFinderTest {
     @Test
     void findByDescriptionWhenJobNotFound() {
         // given
+        given(jobService.getJob(anyString())).willReturn(Optional.empty());
+
         // when
         Optional<Job> optionalJob = jobFinder.findByDescription(asList("10", "20"), "XYZ-123");
 

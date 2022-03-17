@@ -31,6 +31,11 @@ public class JobListService {
         Optional<Job> job = jobFinder.findByDescription(numbers, ticketNumber);
 
         if (job.isEmpty()) {
+            String html = requestService.getText(jobsUrl);
+            job = jobFinder.findInHtml(html, ticketNumber);
+        }
+
+        if (job.isEmpty()) {
             return JobStatus.NOT_FOUND;
         }
 

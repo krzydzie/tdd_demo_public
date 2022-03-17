@@ -65,18 +65,32 @@ class JobListServiceTest {
 
     @Test
     void jobPendingInHtmlFound() {
-        Assertions.fail("Not implemented yet");
         // given
+        given(requestService.getJson(DUMMY_URL)).willReturn(fixtureBuildsNumbers("548", "549"));
+        given(jobFinder.findByDescription(anyList(), anyString())).willReturn(Optional.empty());
+        given(requestService.getText(DUMMY_URL)).willReturn("some html");
+        given(jobFinder.findInHtml("some html", "ABC-123")).willReturn(Optional.of(new Job(JobStatus.PENDING, "")));
+
         // when
+        JobStatus actualJobStatus = jobListService.getStatusByTicketNumber("ABC-123");
+
         // then
+        assertThat(actualJobStatus).isEqualTo(JobStatus.PENDING);
     }
 
     @Test
     void jobPendingInHtmlNotFound() {
-        Assertions.fail("Not implemented yet");
         // given
+        given(requestService.getJson(DUMMY_URL)).willReturn(fixtureBuildsNumbers("548", "549"));
+        given(jobFinder.findByDescription(anyList(), anyString())).willReturn(Optional.empty());
+        given(requestService.getText(DUMMY_URL)).willReturn("some html");
+        given(jobFinder.findInHtml(anyString(), anyString())).willReturn(Optional.empty());
+
         // when
+        JobStatus actualJobStatus = jobListService.getStatusByTicketNumber("ABC-123");
+
         // then
+        assertThat(actualJobStatus).isEqualTo(JobStatus.NOT_FOUND);
     }
 
     private JsonMap fixtureBuildsEmptyList() {

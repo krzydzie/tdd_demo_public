@@ -22,4 +22,20 @@ class JobFinderTest {
         // when
         // then
     }
+
+    @Test
+    void foundInHtml() {
+        Assertions.fail("Not implemented yet");
+        // given
+        // when
+        // then
+    }
+
+    @Test
+    void notFoundInHtml() {
+        Assertions.fail("Not implemented yet");
+        // given
+        // when
+        // then
+    }
 }

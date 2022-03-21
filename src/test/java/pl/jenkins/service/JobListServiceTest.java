@@ -69,6 +69,8 @@ class JobListServiceTest {
         // given
         given(requestService.getJson(DUMMY_URL)).willReturn(fixtureBuildsNumbers("548", "549"));
         given(jobFinder.findByDescription(anyList(), anyString())).willReturn(Optional.empty());
+        given(requestService.getText(DUMMY_URL)).willReturn("some html");
+        given(jobFinder.findInHtml("some html", "ABC-123")).willReturn(Optional.of(new Job(JobStatus.PENDING, "")));
 
         // when
         JobStatus actualJobStatus = jobListService.getStatusByTicketNumber("ABC-123");
@@ -82,6 +84,8 @@ class JobListServiceTest {
         // given
         given(requestService.getJson(DUMMY_URL)).willReturn(fixtureBuildsNumbers("548", "549"));
         given(jobFinder.findByDescription(anyList(), anyString())).willReturn(Optional.empty());
+        given(requestService.getText(DUMMY_URL)).willReturn("some html");
+        given(jobFinder.findInHtml(anyString(), anyString())).willReturn(Optional.empty());
 
         // when
         JobStatus actualJobStatus = jobListService.getStatusByTicketNumber("ABC-123");

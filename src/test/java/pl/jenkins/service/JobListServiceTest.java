@@ -2,11 +2,19 @@ package pl.jenkins.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import pl.jenkins.model.JobStatus;
 
 class JobListServiceTest {
     //tdd - here - initialize jobListService here
+
+    private JobListService jobListService;
+
+    @BeforeEach
+    void init() {
+        jobListService = new JobListService();
+    }
 
     @Test
     void findJobByJiraTicket() {

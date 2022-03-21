@@ -24,7 +24,7 @@ class JobListServiceTest {
 
     @BeforeEach
     void init() {
-        jobListService = new JobListService(DUMMY_URL, requestService);
+        jobListService = new JobListService(DUMMY_URL, requestService, jobFinder);
     }
 
     @Test

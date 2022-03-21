@@ -11,10 +11,12 @@ public class JobListService {
 
     private final String jobsUrl;
     private final RequestService requestService;
+    private final JobFinder jobFinder;
 
-    public JobListService(String jobsUrl, RequestService requestService) {
+    public JobListService(String jobsUrl, RequestService requestService, JobFinder jobFinder) {
         this.jobsUrl = jobsUrl;
         this.requestService = requestService;
+        this.jobFinder = jobFinder;
     }
 
     public JobStatus getStatusByTicketNumber(String ticketNumber) {

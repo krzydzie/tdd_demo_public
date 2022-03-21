@@ -1,5 +1,8 @@
 package pl.jenkins.service;
 
-public class RequestService {
+import pl.jenkins.library.JsonMap;
 
+public interface RequestService {
+
+    JsonMap getJson(String jobsUrl);
 }

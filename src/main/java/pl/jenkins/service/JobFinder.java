@@ -9,4 +9,8 @@ public class JobFinder {
     public Optional<Job> findByDescription(List<String> numbers, String ticketNumber) {
         return null;
     }
+
+    public Optional<Job> findInHtml(String html, String ticketNumber) {
+        return null;
+    }
 }

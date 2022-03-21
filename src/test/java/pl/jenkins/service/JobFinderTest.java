@@ -15,7 +15,7 @@ class JobFinderTest {
 
     @BeforeEach
     void init() {
-        jobFinder = new JobFinder();
+        jobFinder = new JobFinder(jobService);
     }
 
     @Test

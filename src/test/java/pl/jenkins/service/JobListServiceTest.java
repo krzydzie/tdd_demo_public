@@ -21,6 +21,9 @@ class JobListServiceTest {
     @Mock
     private RequestService requestService;
 
+    @Mock
+    private JobFinder jobFinder;
+
 
     @BeforeEach
     void init() {

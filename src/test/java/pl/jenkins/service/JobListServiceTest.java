@@ -7,6 +7,7 @@ import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.lenient;
 
 import java.util.Optional;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -62,6 +63,22 @@ class JobListServiceTest {
 
         // then
         assertThat(actualJobStatus).isEqualTo(JobStatus.NOT_FOUND);
+    }
+
+    @Test
+    void jobPendingInHtmlFound() {
+        Assertions.fail("Not implemented yet");
+        // given
+        // when
+        // then
+    }
+
+    @Test
+    void jobPendingInHtmlNotFound() {
+        Assertions.fail("Not implemented yet");
+        // given
+        // when
+        // then
     }
 
     private JsonMap fixtureBuildsEmptyList() {

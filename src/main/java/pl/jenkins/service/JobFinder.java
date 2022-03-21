@@ -2,10 +2,14 @@ package pl.jenkins.service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import pl.jenkins.model.Job;
+import pl.jenkins.model.JobStatus;
 
 public class JobFinder {
 
+    private static final Pattern pattern = Pattern.compile(" tooltip=\"([^\"]+)\"");
     private final JobService jobService;
 
     public JobFinder(JobService jobService) {
@@ -25,7 +29,19 @@ public class JobFinder {
     }
 
     public Optional<Job> findInHtml(String html, String ticketNumber) {
-        return null;
+        if (html == null || ticketNumber == null) {
+            return Optional.empty();
+        }
+
+        Matcher matcher = pattern.matcher(html);
+
+        while (matcher.find()) {
+            if (matcher.group(1).contains(ticketNumber)) {
+                return Optional.of(new Job(JobStatus.PENDING, ticketNumber));
+            }
+        }
+
+        return Optional.empty();
     }
 
     private Optional<Job> checkJob(String number, String ticketNumber) {

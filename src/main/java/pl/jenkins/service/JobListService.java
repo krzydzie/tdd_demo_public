@@ -1,7 +1,9 @@
 package pl.jenkins.service;
 
 import java.util.List;
+import java.util.Optional;
 import pl.jenkins.library.JsonMap;
+import pl.jenkins.model.Job;
 import pl.jenkins.model.JobNumbers;
 import pl.jenkins.model.JobStatus;
 
@@ -24,6 +26,13 @@ public class JobListService {
             return JobStatus.NOT_FOUND;
         }
 
-        return JobStatus.PENDING;
+        Optional<Job> job = jobFinder.findByDescription(numbers, ticketNumber);
+
+        if (job.isEmpty()) {
+            return JobStatus.NOT_FOUND;
+        }
+
+        return job.get().getStatus();
+
     }
 }

@@ -3,11 +3,19 @@ package pl.jenkins.service;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.Optional;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import pl.jenkins.model.Job;
 import pl.jenkins.model.JobStatus;
 
 public class JobServiceTest {
+
+    private JobService jobService;
+
+    @BeforeEach
+    void init() {
+        jobService = new JobService();
+    }
 
     @Test
     void jobFound() {

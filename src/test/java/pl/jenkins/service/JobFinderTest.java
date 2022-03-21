@@ -57,7 +57,6 @@ class JobFinderTest {
 
     @Test
     void foundInHtml() {
-        // given
         // when
         Optional<Job> optionalJob = jobFinder.findInHtml(
                 "<a tooltip=\"Build Parameters:&lt;br&gt;BRANCH=XYZ-123-some-desc&lt;br&gt\" href=\"#\">", "XYZ-123");

@@ -7,6 +7,14 @@ import pl.jenkins.model.JobStatus;
 
 public class JobListService {
 
+    private final String jobsUrl;
+    private final RequestService requestService;
+
+    public JobListService(String jobsUrl, RequestService requestService) {
+        this.jobsUrl = jobsUrl;
+        this.requestService = requestService;
+    }
+
     public JobStatus getStatusByTicketNumber(String ticketNumber) {
         JsonMap json = requestService.getJson(jobsUrl);
 

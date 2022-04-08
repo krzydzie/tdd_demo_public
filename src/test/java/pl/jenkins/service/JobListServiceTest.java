@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import pl.jenkins.model.JobStatus;
 
 class JobListServiceTest {
+    //tdd - add JobListService - missing class
 
     @Test
     void findJobByJiraTicket() {

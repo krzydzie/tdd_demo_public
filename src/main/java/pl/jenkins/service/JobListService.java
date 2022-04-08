@@ -6,7 +6,7 @@ import pl.jenkins.model.JobNumbers;
 import pl.jenkins.model.JobStatus;
 
 public class JobListService {
-    //tdd - here - initialize jobsUrl, requestService
+    //tdd - JobListServiceTest - initialize url, requestService for JobListService()
 
     private final String jobsUrl;
     private final RequestService requestService;

@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import pl.jenkins.model.JobStatus;
 
 class JobListServiceTest {
-    //tdd - here - initialize jobListService here
+    //tdd - JobListService - add method getStatusByTicketNumber()
 
     private JobListService jobListService;
 

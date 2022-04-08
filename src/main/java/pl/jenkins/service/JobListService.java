@@ -6,7 +6,7 @@ import pl.jenkins.model.JobNumbers;
 import pl.jenkins.model.JobStatus;
 
 public class JobListService {
-    //tdd - here - implement in getStatusByTicketNumber() not found part
+    //tdd - add RequestService - missing class
 
     public JobStatus getStatusByTicketNumber(String ticketNumber) {
         JsonMap json = requestService.getJson(jobsUrl);

@@ -14,6 +14,7 @@ import pl.jenkins.model.JobStatus;
 
 @ExtendWith(MockitoExtension.class)
 class JobListServiceTest {
+    //tdd - JobListService - getStatusByTicketNumber() implement part for job = jobFinder.findByDescription()
 
     private static final String DUMMY_URL = "https://jenkins.acme.com/SuperService/job/super-sevice-CI/";
     private JobListService jobListService;
